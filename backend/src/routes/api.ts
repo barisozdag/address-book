@@ -1,9 +1,8 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import contactsRouter from './api/contacts';
 
 const apiRouter = express.Router();
 
-apiRouter.get('/', (req: Request, res: Response, next: NextFunction) => {
-  res.json({ hello: 'world' });
-})
+apiRouter.use('/contacts', contactsRouter);
 
 export default apiRouter;
