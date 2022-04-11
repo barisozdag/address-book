@@ -51,10 +51,15 @@ contactsRouter.get('/:id', (req: Request, res: Response, next: NextFunction) => 
 contactsRouter.put('/:id', (req: Request, res: Response, next: NextFunction) => {
   Contact.findByIdAndUpdate(
     req.params.id,
-    { $set: req.body },
+    {
+      $set: req.body,
+    },
+    {
+      new: true,
+    },
     (
       error: CallbackError,
-      data: Document<unknown, any, IContact> & IContact & { _id: Types.ObjectId; }
+      data: Document<unknown, any, IContact> & IContact & { _id: Types.ObjectId; } | null
     ) => {
       if (error) {
         return next(error);
