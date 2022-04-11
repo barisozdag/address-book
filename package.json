@@ -5,13 +5,15 @@
   "main": "./backend/dist/server.js",
   "private": true,
   "scripts": {
-    "start": "npm run start:backend",
+    "start": "npm run build && npm run start:backend",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:backend": "cd backend && npm run build && npm run start",
+    "start:backend": "cd backend && npm run start",
     "backend": "cd backend && npm run dev",
-    "dev": "npm run backend",
-    "build": "npm run build:backend",
-    "build:backend": "cd backend && npm run build"
+    "frontend": "cd frontend && npm run start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,9 +37,10 @@
   },
   "homepage": "https://github.com/barisozdag/address-book#readme",
   "devDependencies": {
+    "concurrently": "^7.1.0",
     "express": "^4.17.3"
   },
   "dependencies": {
-      "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0"
   }
 }

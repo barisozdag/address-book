@@ -23,6 +23,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', apiRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (_req: Request, res: Response) => {
+  res.send('invalid endpoint');
+});
+
+app.get('*', (_req: Request, res: Response) => {
+  res.sendFile(
+    path.join(__dirname, 'public/index.html'),
+  );
+});
+
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;
