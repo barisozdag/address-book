@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Contact } from '../models/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class ContactsService {
       map((res) => res || {}),
       catchError(this.errorMgmt),
     );
+  }
+
+  addContact(data: Contact): Observable<any> {
+    return this.http.post(`${this.endpoint}`, data).pipe(catchError(this.errorMgmt));
   }
 
   errorMgmt(error: HttpErrorResponse) {

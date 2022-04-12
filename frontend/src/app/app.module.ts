@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AvatarInitialsComponent } from './avatar-initials/avatar-initials.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { TitlebarComponent } from './titlebar/titlebar.component';
+import { ContactAddComponent } from './contact-add/contact-add.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneMaskDirective } from './phonemask.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { TitlebarComponent } from './titlebar/titlebar.component';
     ContactListComponent,
     AvatarInitialsComponent,
     ContactInfoComponent,
-    TitlebarComponent
+    TitlebarComponent,
+    ContactAddComponent,
+    PhoneMaskDirective,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +30,7 @@ import { TitlebarComponent } from './titlebar/titlebar.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

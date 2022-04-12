@@ -10,10 +10,10 @@
   <mat-list-item *ngFor="let phone of contact.phones">
     <h6 matLine>Phone:</h6>
     <p matLine class="phonenumber">
-      <span> {{phone}} </span>
+      <span> {{formatPhone(phone)}} </span>
       <span class="spacer"></span>
     </p>
-    <a mat-icon-button aria-label="Call" [href]="'tel:' + phone">
+    <a mat-icon-button aria-label="Call" [href]="'tel:+90' + phone">
       <mat-icon aria-hidden="false" aria-label="Call">phone</mat-icon>
     </a>
   </mat-list-item>

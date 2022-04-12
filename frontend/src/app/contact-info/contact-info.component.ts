@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Contact } from '../../models/contact';
 import { ContactsService } from '../contacts.service';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-contact-info',
@@ -23,6 +24,10 @@ export class ContactInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  formatPhone(phoneNumber: number) {
+    return Utils.formatPhone(phoneNumber.toString());
   }
 
 }
