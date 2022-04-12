@@ -1,0 +1,6 @@
+<div class="avatar">
+  <img *ngIf="!showInitials" src="{{ photoUrl }}" alt="{{ name }}">
+  <div *ngIf="showInitials" class="initials">
+    {{ initials }}
+  </div>
+</div>

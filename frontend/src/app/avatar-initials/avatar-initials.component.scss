@@ -1,0 +1,23 @@
+.avatar {
+  border-radius   : 50%;
+  width           : 40px;
+  height          : 40px;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  margin-right    : 5px;
+  background-color: #808080;
+
+  img{
+      border-radius: 50%;
+      width        : 40px;
+      height       : 40px;
+  }
+
+  .initials {
+      color         : #FFFFFF;
+      font-size     : 18px;
+      line-height   : 17px;
+      letter-spacing: 0.2625px;
+  }
+}
