@@ -13,6 +13,7 @@ import { TitlebarComponent } from './titlebar/titlebar.component';
 import { ContactAddComponent } from './contact-add/contact-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneMaskDirective } from './phonemask.directive';
+import { ContactEditComponent } from './contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PhoneMaskDirective } from './phonemask.directive';
     TitlebarComponent,
     ContactAddComponent,
     PhoneMaskDirective,
+    ContactEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class ContactsService {
   }
 
   getContact(id: string): Observable<any> {
-    let URL = `${this.endpoint}/${id}`;
+    const URL = `${this.endpoint}/${id}`;
     return this.http.get(URL, { headers: this.headers }).pipe(
       map((res) => res || {}),
       catchError(this.errorMgmt),
@@ -31,6 +31,16 @@ export class ContactsService {
 
   addContact(data: Contact): Observable<any> {
     return this.http.post(`${this.endpoint}`, data).pipe(catchError(this.errorMgmt));
+  }
+
+  updateContact(id: string, data: Contact): Observable<any> {
+    const URL = `${this.endpoint}/${id}`;
+    return this.http.put(URL, data, { headers: this.headers }).pipe(catchError(this.errorMgmt));
+  }
+
+  deleteContact(id: string): Observable<any> {
+    const URL = `${this.endpoint}/${id}`;
+    return this.http.delete(URL).pipe(catchError(this.errorMgmt));
   }
 
   errorMgmt(error: HttpErrorResponse) {

@@ -16,17 +16,20 @@
     <a mat-icon-button aria-label="Call" [href]="'tel:+90' + phone">
       <mat-icon aria-hidden="false" aria-label="Call">phone</mat-icon>
     </a>
+    <mat-divider [inset]="true"></mat-divider>
   </mat-list-item>
   <mat-list-item *ngIf="contact && contact.mail">
     <h6 matLine>E-mail:</h6>
     <p matLine>
       <span> {{contact.mail}} </span>
     </p>
+    <mat-divider [inset]="true"></mat-divider>
   </mat-list-item>
   <mat-list-item *ngIf="contact">
     <h6 matLine>Address:</h6>
     <p matLine>
       <span> {{contact.address}} </span>
     </p>
+    <mat-divider [inset]="true"></mat-divider>
   </mat-list-item>
 </mat-list>

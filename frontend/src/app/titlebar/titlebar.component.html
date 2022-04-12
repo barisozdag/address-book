@@ -20,4 +20,12 @@
   >
     Edit
   </a>
+  <a
+    mat-icon-button
+    *ngIf="currentPath === 'contact/edit/:id' || currentPath === 'contact/add'"
+    aria-label="Cancel"
+    [routerLink]="['/']"
+  >
+    <mat-icon>close</mat-icon>
+  </a>
 </mat-toolbar>
