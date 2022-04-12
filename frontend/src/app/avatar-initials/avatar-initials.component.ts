@@ -9,6 +9,7 @@ export class AvatarInitialsComponent implements OnInit {
 
   @Input() public photoUrl: string = '';
   @Input() public name: string = '';
+  @Input() public size: number = 40; // px
 
   public showInitials = false;
   public initials: string = '';

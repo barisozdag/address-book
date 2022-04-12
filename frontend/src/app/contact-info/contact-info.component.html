@@ -1,0 +1,32 @@
+<app-titlebar [contact]="contact"></app-titlebar>
+
+<div class="center" *ngIf="contact">
+  <app-avatar-initials [name]="contact.name" [size]="100" style="margin-bottom: 1em;"></app-avatar-initials>
+  <div class="break"></div>
+  <h1>{{ contact.name }}</h1>
+</div>
+
+<mat-list *ngIf="contact" class="contact-info">
+  <mat-list-item *ngFor="let phone of contact.phones">
+    <h6 matLine>Phone:</h6>
+    <p matLine class="phonenumber">
+      <span> {{phone}} </span>
+      <span class="spacer"></span>
+    </p>
+    <a mat-icon-button aria-label="Call" [href]="'tel:' + phone">
+      <mat-icon aria-hidden="false" aria-label="Call">phone</mat-icon>
+    </a>
+  </mat-list-item>
+  <mat-list-item *ngIf="contact && contact.mail">
+    <h6 matLine>E-mail:</h6>
+    <p matLine>
+      <span> {{contact.mail}} </span>
+    </p>
+  </mat-list-item>
+  <mat-list-item *ngIf="contact">
+    <h6 matLine>Address:</h6>
+    <p matLine>
+      <span> {{contact.address}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>

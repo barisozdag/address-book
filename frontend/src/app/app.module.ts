@@ -8,12 +8,16 @@ import { AngularMaterialModule } from './material.module';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AvatarInitialsComponent } from './avatar-initials/avatar-initials.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { TitlebarComponent } from './titlebar/titlebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    AvatarInitialsComponent
+    AvatarInitialsComponent,
+    ContactInfoComponent,
+    TitlebarComponent
   ],
   imports: [
     BrowserModule,

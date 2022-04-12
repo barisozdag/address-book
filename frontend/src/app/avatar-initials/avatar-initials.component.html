@@ -1,6 +1,6 @@
-<div class="avatar">
-  <img *ngIf="!showInitials" src="{{ photoUrl }}" alt="{{ name }}">
-  <div *ngIf="showInitials" class="initials">
+<div class="avatar" [ngStyle]="{'width.px': size, 'height.px': size}">
+  <img *ngIf="!showInitials" src="{{ photoUrl }}" alt="{{ name }}" [ngStyle]="{'width.px': size, 'height.px': size}">
+  <div *ngIf="showInitials" class="initials" [ngStyle]="{'font-size.px': size * 0.45, 'line-height.px': size * 0.45 - 1}">
     {{ initials }}
   </div>
 </div>
