@@ -13,7 +13,7 @@ import { Contact } from '../models/contact';
   providedIn: 'root'
 })
 export class ContactsService {
-  endpoint: string = 'http://localhost:4200/api/contacts';
+  endpoint: string = '/api/contacts';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient) { }
 

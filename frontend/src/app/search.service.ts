@@ -12,7 +12,7 @@ import {
   providedIn: 'root'
 })
 export class SearchService {
-  endpoint: string = 'http://localhost:4200/api/search';
+  endpoint: string = '/api/search';
   queryUrl: string = '?q=';
 
   constructor(
