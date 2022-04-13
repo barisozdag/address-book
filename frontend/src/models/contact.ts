@@ -2,6 +2,6 @@ export interface Contact {
   _id: string;
   name: string;
   address: string;
-  phones: number[];
+  phones: string[];
   mail?: string;
 }

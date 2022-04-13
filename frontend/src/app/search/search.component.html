@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-form-field class="full-width" [floatLabel]="'never'">
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      type="search"
+      [formControl]="searchControl"
+    />
+    <button mat-icon-button matSuffix type="button" (click)="clearSearch()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-toolbar>
+<mat-nav-list>
+  <a
+    mat-list-item
+    *ngFor="let contact of results"
+    [title]="contact.name"
+    [routerLink] ="['/contact', contact._id]"
+  >
+    <app-avatar-initials [name]="contact.name"></app-avatar-initials>
+    {{ contact.name }}
+    <mat-divider [inset]="true"></mat-divider>
+  </a>
+ </mat-nav-list>

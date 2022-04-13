@@ -26,8 +26,8 @@ export class ContactInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formatPhone(phoneNumber: number) {
-    return Utils.formatPhone(phoneNumber.toString());
+  formatPhone(phoneNumber: string) {
+    return Utils.formatPhone(phoneNumber);
   }
 
 }

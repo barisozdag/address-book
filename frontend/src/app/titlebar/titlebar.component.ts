@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Contact } from 'src/models/contact';
 
@@ -7,9 +7,10 @@ import { Contact } from 'src/models/contact';
   templateUrl: './titlebar.component.html',
   styleUrls: ['./titlebar.component.scss']
 })
-export class TitlebarComponent implements OnInit {
+export class TitlebarComponent {
 
   @Input() contact: Contact | undefined;
+  @Input() search: boolean = false;
   currentPath: string = '';
 
   constructor(
@@ -18,9 +19,6 @@ export class TitlebarComponent implements OnInit {
     if (this.route.routeConfig && this.route.routeConfig.path) {
       this.currentPath = this.route.routeConfig.path;
     }
-  }
-
-  ngOnInit(): void {
   }
 
 }

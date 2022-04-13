@@ -5,6 +5,13 @@
   <div>Address Book</div>
   <div class="spacer"></div>
   <a
+    mat-icon-button
+    aria-label="Search"
+    [routerLink]="['/search']"
+  >
+    <mat-icon>search</mat-icon>
+  </a>
+  <a
     mat-button
     *ngIf="currentPath === ''"
     aria-label="Add new contact"

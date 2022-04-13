@@ -14,6 +14,7 @@ import { ContactAddComponent } from './contact-add/contact-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneMaskDirective } from './phonemask.directive';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ContactEditComponent } from './contact-edit/contact-edit.component';
     ContactAddComponent,
     PhoneMaskDirective,
     ContactEditComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
