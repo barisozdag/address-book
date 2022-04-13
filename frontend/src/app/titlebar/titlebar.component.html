@@ -1,7 +1,13 @@
 <mat-toolbar color="primary">
-  <a mat-icon-button color="link" [routerLink]="['/']" *ngIf="currentPath !== ''">
+  <button
+    mat-icon-button
+    type="button"
+    color="link"
+    *ngIf="currentPath !== ''"
+    (click)="back()"
+  >
     <mat-icon aria-hidden="false" aria-label="Back">chevron_left</mat-icon>
-  </a>
+  </button>
   <div>Address Book</div>
   <div class="spacer"></div>
   <a
@@ -27,12 +33,13 @@
   >
     Edit
   </a>
-  <a
+  <button
     mat-icon-button
+    type="button"
     *ngIf="currentPath === 'contact/edit/:id' || currentPath === 'contact/add'"
     aria-label="Cancel"
-    [routerLink]="['/']"
+    (click)="back()"
   >
     <mat-icon>close</mat-icon>
-  </a>
+  </button>
 </mat-toolbar>

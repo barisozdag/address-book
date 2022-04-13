@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Contact } from 'src/models/contact';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Contact } from '../../models/contact';
 
 @Component({
   selector: 'app-titlebar',
@@ -15,9 +16,19 @@ export class TitlebarComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
   ) {
     if (this.route.routeConfig && this.route.routeConfig.path) {
       this.currentPath = this.route.routeConfig.path;
+    }
+  }
+
+  back(main: boolean = false): void {
+    if (main) {
+      this.router.navigateByUrl('/');
+    } else {
+      this.location.back();
     }
   }
 

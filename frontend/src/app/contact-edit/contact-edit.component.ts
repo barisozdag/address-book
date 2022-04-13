@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Contact } from 'src/models/contact';
+import { Contact } from '../../models/contact';
 import { ContactsService } from '../contacts.service';
 import { SearchService } from '../search.service';
 import Utils from '../utils';
@@ -16,12 +16,12 @@ import Utils from '../utils';
 export class ContactEditComponent {
 
   contactForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    address: ['', [Validators.required, Validators.minLength(5)]],
+    name: [null, [Validators.required, Validators.minLength(3)]],
+    address: [null, [Validators.required, Validators.minLength(5)]],
     phones: this.fb.array([
-      this.fb.control('', [Validators.required]),
+      this.fb.control(null, [Validators.required]),
     ]),
-    mail: ['', [
+    mail: [null, [
       Validators.email,
       Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/),
     ]]
@@ -133,23 +133,33 @@ export class ContactEditComponent {
 
     const contact = {...this.contactForm.value};
 
-    contact.phones = contact.phones.map((phone: number | string) => {
-      if (typeof phone === 'number')
-        phone = phone.toString();
-      return Number(phone.replace(/\D/g, '').substring(0, 10));
-    });
+    contact.phones = contact.phones.map((phone: string) => phone.replace(/\D/g, '').substring(0, 10));
 
     this.contactService.updateContact(id, contact)
       .subscribe({
-        next: (res: Contact) => {
-          this.snackbar.open(
-            `Contact: '${res.name}' updated succesfully`,
-            undefined,
-            {
-              duration: 3000,
-              verticalPosition: 'top',
-            }
-          );
+        next: (res) => {
+          if (res.errors !== undefined) {
+            res.errors.forEach((error: string) => {
+              this.snackbar.open(
+                `Error: '${error}'`,
+                undefined,
+                {
+                  duration: 3000,
+                  verticalPosition: 'top',
+                }
+              );
+            })
+          } else {
+            this.snackbar.open(
+              `Contact '${res.name}' successfully updated`,
+              undefined,
+              {
+                duration: 3000,
+                verticalPosition: 'top',
+              }
+            );
+            this.router.navigateByUrl('/');
+          }
         },
         error: (err) => {
           this.snackbar.open(
@@ -160,9 +170,6 @@ export class ContactEditComponent {
               verticalPosition: 'top',
             }
           );
-        },
-        complete: () => {
-          this.router.navigateByUrl('/');
         }
       });
   }

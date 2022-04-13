@@ -24,23 +24,13 @@ export class AvatarInitialsComponent implements OnInit {
   }
 
   private createInititals(): void {
-    let initials = "";
+    const regex = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
 
-    for (let i = 0; i < this.name.length; i++) {
-      if (this.name.charAt(i) === ' ') {
-        continue;
-      }
+    const initials = [...this.name.matchAll(regex)] || [];
 
-      if (this.name.charAt(i) === this.name.charAt(i).toUpperCase()) {
-        initials += this.name.charAt(i);
-
-        if (initials.length == 2) {
-          break;
-        }
-      }
-    }
-
-    this.initials = initials;
+    this.initials = (
+      (initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
+    ).toUpperCase();
   }
 
 }
