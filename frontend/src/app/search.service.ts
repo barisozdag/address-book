@@ -36,6 +36,24 @@ export class SearchService {
       );
   }
 
+  check(name: Observable<string>) {
+    return name.pipe(
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap((name) => this.checkContact(name))
+    );
+  }
+
+  checkContact(name: string) {
+    const URL = `${this.endpoint}/contact${this.queryUrl}${name}`;
+    return this.http
+      .get(URL)
+      .pipe(
+        map((res) => res || {}),
+        catchError(this.errorMgmt),
+      );
+  }
+
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

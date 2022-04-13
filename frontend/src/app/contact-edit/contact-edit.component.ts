@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Contact } from 'src/models/contact';
 import { ContactsService } from '../contacts.service';
+import { SearchService } from '../search.service';
 import Utils from '../utils';
 
 @Component({
@@ -25,6 +27,10 @@ export class ContactEditComponent {
     ]]
   });
 
+  contact?: Contact;
+  nameValue$ = new Subject<string>();
+  nameControl: FormControl;
+
   get phones() {
     return this.contactForm.get('phones') as FormArray;
   }
@@ -34,11 +40,13 @@ export class ContactEditComponent {
     private router: Router,
     private actRoute: ActivatedRoute,
     private contactService: ContactsService,
+    private searchService: SearchService,
     private snackbar: MatSnackBar,
   ) {
     const id = this.actRoute.snapshot.paramMap.get('id');
     if (id !== null) {
       this.contactService.getContact(id).subscribe((contact) => {
+        this.contact = contact;
         for (let i = 1; i < contact.phones.length; i++) {
           this.addPhone();
           contact.phones[i] = Utils.formatPhone(contact.phones[i].toString());
@@ -46,6 +54,20 @@ export class ContactEditComponent {
         this.contactForm.patchValue(contact);
       });
     }
+
+    this.nameControl = this.contactForm.get('name') as FormControl;
+    this.nameControl.valueChanges
+      .subscribe((value) => {
+        if (this.contact?.name === value) return;
+        this.nameValue$.next(value);
+      });
+
+    this.searchService.check(this.nameValue$)
+      .subscribe((result: Object) => {
+        const r = result as { found: boolean };
+        if (r.found)
+          this.nameControl.setErrors({ notUnique: true });
+      });
   }
 
   addPhone() {
@@ -61,7 +83,7 @@ export class ContactEditComponent {
     if (!id) return;
     if (!window.confirm('Are you sure you want to delete?')) return;
 
-    this.contactService.deleteContact('kasdjf')
+    this.contactService.deleteContact(id)
       .subscribe({
         next: (res: Contact) => {
           this.snackbar.open(

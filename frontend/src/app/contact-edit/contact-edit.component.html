@@ -18,6 +18,9 @@
       <mat-error *ngIf="handleError('name', 'minlength')">
         Name must be longer than <strong>3 characters</strong>
       </mat-error>
+      <mat-error *ngIf="handleError('name', 'notUnique')">
+        Name is <strong>already in contacts</strong>
+      </mat-error>
     </mat-form-field>
     <div formArrayName="phones">
       <mat-form-field class="full-width" *ngFor="let phone of phones.controls; let i=index">

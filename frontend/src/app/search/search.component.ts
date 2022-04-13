@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Contact } from '../../models/contact';
@@ -15,6 +16,7 @@ export class SearchComponent {
   results: Contact[] = [];
   searchValue$ = new Subject<string>();
   searchControl = new FormControl('');
+  @ViewChild('search') search!: MatInput;
 
   constructor(
     private router: Router,
@@ -26,7 +28,13 @@ export class SearchComponent {
     this.searchService.search(this.searchValue$)
       .subscribe((results: any) => {
         this.results = results;
-      })
+      });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.search.focus();
+    }, 100);
   }
 
   clearSearch() {
