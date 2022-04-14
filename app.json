@@ -1,0 +1,19 @@
+{
+  "name": "Address Book",
+  "description": "Simple Address Book application",
+  "repository": "https://github.com/barisozdag/address-book",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": [
+    "address",
+    "book",
+    "typescript",
+    "node",
+    "angular"
+  ],
+  "env": {
+    "MONGODB": {
+      "description": "MongoDB connection URI. ex. mongodb://user:password@mongodb0.example.com:27017/dbname",
+      "generator": "secret"
+    }
+  }
+}

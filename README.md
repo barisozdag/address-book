@@ -46,3 +46,6 @@ Start the app in the `production` environment:
 ```bash
 npm run start
 ```
+
+## Deploy to Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

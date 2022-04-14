@@ -5,7 +5,7 @@
   "main": "./backend/dist/server.js",
   "private": true,
   "scripts": {
-    "start": "npm run build && npm run start:backend",
+    "start": "npm run start:backend",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:backend": "cd backend && npm run start",
     "backend": "cd backend && npm run dev",
@@ -36,6 +36,9 @@
     "url": "https://github.com/barisozdag/address-book/issues"
   },
   "homepage": "https://github.com/barisozdag/address-book#readme",
+  "engines": {
+    "node": "16.x"
+  },
   "devDependencies": {
     "concurrently": "^7.1.0",
     "express": "^4.17.3"
