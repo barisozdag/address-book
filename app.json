@@ -1,8 +1,8 @@
 {
   "name": "Address Book",
   "description": "Simple Address Book application",
+  "website": "https://b-addressbook.herokuapp.com/",
   "repository": "https://github.com/barisozdag/address-book",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
   "keywords": [
     "address",
     "book",
@@ -12,8 +12,7 @@
   ],
   "env": {
     "MONGODB": {
-      "description": "MongoDB connection URI. ex. mongodb://user:password@mongodb0.example.com:27017/dbname",
-      "generator": "secret"
+      "description": "MongoDB connection URI. ex. mongodb://user:password@mongodb0.example.com:27017/dbname"
     }
   }
 }

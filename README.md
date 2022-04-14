@@ -1,5 +1,8 @@
 # Address Book
 
+### Demo
+[https://b-addressbook.herokuapp.com/](https://b-addressbook.herokuapp.com/)
+
 ## Install
 
 Clone the repo and install dependencies:
@@ -48,4 +51,4 @@ npm run start
 ```
 
 ## Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/barisozdag/address-book)
