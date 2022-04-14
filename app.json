@@ -14,5 +14,6 @@
     "MONGODB": {
       "description": "MongoDB connection URI. ex. mongodb://user:password@mongodb0.example.com:27017/dbname"
     }
-  }
+  },
+  "stack": "container"
 }
