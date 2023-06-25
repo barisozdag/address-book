@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import 'dotenv/config'
 
@@ -17,8 +16,8 @@ mongoose
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
 app.use(express.static(path.join(__dirname, 'public')));
