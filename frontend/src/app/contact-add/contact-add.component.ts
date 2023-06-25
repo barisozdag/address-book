@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -13,7 +13,7 @@ import { SearchService } from '../search.service';
 })
 export class ContactAddComponent {
 
-  contactForm: FormGroup = this.fb.group({
+  contactForm: UntypedFormGroup = this.fb.group({
     name: [null, [Validators.required, Validators.minLength(3)]],
     address: [null, [Validators.required, Validators.minLength(5)]],
     phones: this.fb.array([
@@ -25,20 +25,20 @@ export class ContactAddComponent {
     ]]
   });
   nameValue$ = new Subject<string>();
-  nameControl: FormControl;
+  nameControl: UntypedFormControl;
 
   get phones() {
-    return this.contactForm.get('phones') as FormArray;
+    return this.contactForm.get('phones') as UntypedFormArray;
   }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private contactService: ContactsService,
     private searchService: SearchService,
     private snackbar: MatSnackBar,
   ) {
-    this.nameControl = this.contactForm.get('name') as FormControl;
+    this.nameControl = this.contactForm.get('name') as UntypedFormControl;
     this.nameControl.valueChanges
       .subscribe((value) => {
         this.nameValue$.next(value);
@@ -68,7 +68,7 @@ export class ContactAddComponent {
 
     const parent = controlName.substring(0, dotIndex);
     const controlIndex = Number(controlName.substring(dotIndex + 1));
-    const parentControl = this.contactForm.controls[parent] as FormArray;
+    const parentControl = this.contactForm.controls[parent] as UntypedFormArray;
     return parentControl.controls[controlIndex].hasError(errorName);
   };
 

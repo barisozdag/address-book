@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -15,7 +15,7 @@ export class SearchComponent {
 
   results: Contact[] = [];
   searchValue$ = new Subject<string>();
-  searchControl = new FormControl('');
+  searchControl = new UntypedFormControl('');
   @ViewChild('search') search!: MatInput;
 
   constructor(
