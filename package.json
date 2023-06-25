@@ -40,7 +40,7 @@
     "node": "16.x"
   },
   "devDependencies": {
-    "concurrently": "^7.1.0",
+    "concurrently": "^8.2.0",
     "express": "^4.17.3"
   },
   "dependencies": {
