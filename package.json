@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/barisozdag/address-book#readme",
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=18.10.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"

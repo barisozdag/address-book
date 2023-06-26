@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/barisozdag/address-book#readme",
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=18.10.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
