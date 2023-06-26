@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { MatInput } from '@angular/material/input';
+import { MatLegacyInput as MatInput } from '@angular/material/legacy-input';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Contact } from '../../models/contact';
