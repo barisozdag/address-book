@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Contact } from '../../models/contact';
@@ -15,7 +15,7 @@ import Utils from '../utils';
 })
 export class ContactEditComponent {
 
-  contactForm: FormGroup = this.fb.group({
+  contactForm: UntypedFormGroup = this.fb.group({
     name: [null, [Validators.required, Validators.minLength(3)]],
     address: [null, [Validators.required, Validators.minLength(5)]],
     phones: this.fb.array([
@@ -29,14 +29,14 @@ export class ContactEditComponent {
 
   contact?: Contact;
   nameValue$ = new Subject<string>();
-  nameControl: FormControl;
+  nameControl: UntypedFormControl;
 
   get phones() {
-    return this.contactForm.get('phones') as FormArray;
+    return this.contactForm.get('phones') as UntypedFormArray;
   }
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     private router: Router,
     private actRoute: ActivatedRoute,
     private contactService: ContactsService,
@@ -55,7 +55,7 @@ export class ContactEditComponent {
       });
     }
 
-    this.nameControl = this.contactForm.get('name') as FormControl;
+    this.nameControl = this.contactForm.get('name') as UntypedFormControl;
     this.nameControl.valueChanges
       .subscribe((value) => {
         if (this.contact?.name === value) return;
@@ -119,7 +119,7 @@ export class ContactEditComponent {
 
     const parent = controlName.substring(0, dotIndex);
     const controlIndex = Number(controlName.substring(dotIndex + 1));
-    const parentControl = this.contactForm.controls[parent] as FormArray;
+    const parentControl = this.contactForm.controls[parent] as UntypedFormArray;
     return parentControl.controls[controlIndex].hasError(errorName);
   };
 
